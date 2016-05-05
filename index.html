@@ -1,3 +1,6 @@
+﻿<?php
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,30 +24,30 @@
         <form>
             <fieldset class="form-group">
                 <label for="email">Email address</label>
-                <input type="text" class="form-control" id="email" placeholder="Enter email">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
                 <small class="text-muted">We'll never share your email with anyone else.</small>
             </fieldset>
 
             <fieldset class="form-group">
                 <label for="subject">Subject</label>
-                <input type="text" class="form-control" id="subject" placeholder="">
+                <input type="text" class="form-control" id="subject" name="subject" placeholder="">
             </fieldset>
 
 
             <fieldset class="form-group">
                 <label for="content">Your message to us</label>
-                <textarea class="form-control" id="content" rows="3"></textarea>
+                <textarea class="form-control" id="content" name="content" rows="3"></textarea>
             </fieldset>
 
             <fieldset class="form-group">
                 <label for="attach">Attachment</label>
-                <input type="file" class="form-control-file" id="attach">
+                <input type="file" class="form-control-file" name="attach" id="attach">
                 <small class="text-muted">Optional</small>
             </fieldset>
 
             <div class="checkbox">
                 <label>
-                    <input type="checkbox">Please identify whether or not you want to be reached by us in the future
+                    <input type="checkbox" name="check">Please identify whether you want to be reached by us in the future
                 </label>
             </div>
 
@@ -74,9 +77,12 @@
                 errMsg += "<p>Please enter a message!</p>";// set the error messages
 
             if (errMsg != "") {
-                $("#err").html(
+                $("#err").html( // set bootstrap alert style alerts
                    '<div class="alert alert-warning" role="alert"><strong>Error(s):</strong>' + errMsg + '</div>');
-            }// set bootstrap alert style alerts
+            } else {
+                $("form").unbind('submit').submit(); //submit the form
+            }
+
         });
 
     </script>
